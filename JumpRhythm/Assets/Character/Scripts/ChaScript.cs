@@ -10,6 +10,13 @@ public class ChaScript : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.attachedRigidbody)
+            other.attachedRigidbody.useGravity = false;
+
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow))
