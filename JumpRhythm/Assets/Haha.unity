@@ -221,7 +221,6 @@ GameObject:
   - 4: {fileID: 459025716}
   - 33: {fileID: 459025718}
   - 23: {fileID: 459025717}
-  - 154: {fileID: 459025719}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -280,16 +279,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 459025715}
   m_Mesh: {fileID: 4300002, guid: 49fd7d83a0655114abf7723fac67bb63, type: 3}
---- !u!154 &459025719
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 459025715}
-  m_Material: {fileID: 13400000, guid: d811a68f7452b5646a632e5abbd3a530, type: 2}
-  m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 85bf2608199d2ca4cb77008f948c39c0, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!1 &464258779
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +314,7 @@ TerrainCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464258779}
-  m_Material: {fileID: 13400000, guid: d811a68f7452b5646a632e5abbd3a530, type: 2}
+  m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 85bf2608199d2ca4cb77008f948c39c0, type: 2}
   m_EnableTreeColliders: 1
@@ -735,7 +724,7 @@ Animator:
 Transform:
   m_PrefabParentObject: {fileID: 400016, guid: ddf397bb8ce11384bbc6d7b61581bbc6, type: 3}
   m_PrefabInternal: {fileID: 953555959}
---- !u!61 &1448040742
+--- !u!61 &1448040741
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
