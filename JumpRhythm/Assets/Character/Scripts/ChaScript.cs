@@ -4,7 +4,6 @@ using System.Collections;
 public class ChaScript : MonoBehaviour
 {
     private Animator anim;
-
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -78,5 +77,16 @@ public class ChaScript : MonoBehaviour
         {
             anim.SetBool("Attack", false);
         }
+
+/*        trying to fix Jump move
+         if (Input.GetKey(KeyCode.J))
+        {
+            float translation = Time.deltaTime * 20;
+            float translation2 = Time.deltaTime * 10;
+            transform.Translate(0, translation, translation2);
+        }
+*/
     }
+
+
 }
