@@ -17,6 +17,7 @@ public class Move : MonoBehaviour
 
     void Update()
     {
+        
         animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
     }
 }
