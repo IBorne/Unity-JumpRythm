@@ -4,9 +4,14 @@ using System.Collections;
 public class ChaScript : MonoBehaviour
 {
     private Animator anim;
+    public CharacterController controller;
+    public float vertical_velocity;
+    
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -18,6 +23,10 @@ public class ChaScript : MonoBehaviour
 
     void Update()
     {
+        if (controller.isGrounded)
+        {
+            vertical_velocity = -8f * Time.deltaTime;
+        }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             anim.SetBool("RunLeft", true);
@@ -78,6 +87,7 @@ public class ChaScript : MonoBehaviour
             anim.SetBool("Attack", false);
         }
 
+        controller.Move(new Vector3(0, vertical_velocity, 0));
 /*        trying to fix Jump move
          if (Input.GetKey(KeyCode.J))
         {
