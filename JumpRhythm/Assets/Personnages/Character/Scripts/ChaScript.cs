@@ -11,7 +11,7 @@ public class ChaScript : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        controller = GetComponent<CharacterController>();
+  //      controller = GetComponent<CharacterController>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,11 +23,11 @@ public class ChaScript : MonoBehaviour
 
     void Update()
     {
-        if (controller.isGrounded)
+ /*       if (controller.isGrounded)
         {
             vertical_velocity = -8f * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+ */       if (Input.GetKey(KeyCode.UpArrow))
         {
             anim.SetBool("RunLeft", true);
             float translation = Time.deltaTime * 10;
@@ -87,7 +87,7 @@ public class ChaScript : MonoBehaviour
             anim.SetBool("Attack", false);
         }
 
-        controller.Move(new Vector3(0, vertical_velocity, 0));
+//        controller.Move(new Vector3(0, vertical_velocity, 0));
 /*        trying to fix Jump move
          if (Input.GetKey(KeyCode.J))
         {
