@@ -88,13 +88,7 @@ public class ChaScript : MonoBehaviour
         }
 
 //        controller.Move(new Vector3(0, vertical_velocity, 0));
-        //trying to fix Jump move
-         if (Input.GetKey(KeyCode.J))
-        {
-            float translation = Time.deltaTime * 20;
-            float translation2 = Time.deltaTime * 10;
-            transform.Translate(0, translation, translation2);
-        }
+
 
     }
 
