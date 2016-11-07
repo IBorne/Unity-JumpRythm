@@ -15,8 +15,8 @@ public class ChaScript : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-       /* controller = GetComponent<CharacterController>();
- */   }
+ ///       controller = GetComponent<CharacterController>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -27,7 +27,7 @@ public class ChaScript : MonoBehaviour
 
     void Update()
     {
-    /*    if (controller.isGrounded)
+/*        if (controller.isGrounded)
         {
             vertical_velocity = -gravity * Time.deltaTime;
             if (Input.GetKey(KeyCode.J))
@@ -46,7 +46,7 @@ public class ChaScript : MonoBehaviour
         controller.Move(moveVector * Time.deltaTime);
 
 
-   */     if (Input.GetKey(KeyCode.UpArrow))
+ */       if (Input.GetKey(KeyCode.UpArrow))
         {
             anim.SetBool("RunLeft", true);
             float translation = Time.deltaTime * 10;
@@ -106,8 +106,17 @@ public class ChaScript : MonoBehaviour
             anim.SetBool("Attack", false);
         }
 
-
-
+        if (Input.GetKey(KeyCode.J))
+        {
+            float translation = Time.deltaTime * 10;
+            transform.Translate(0, translation, translation);
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            float translation = Time.deltaTime * 10;
+            transform.Translate(0, -translation, 0);
+        }
+    
     }
 
 
