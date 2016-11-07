@@ -3,16 +3,20 @@ using System.Collections;
 
 public class ChaScript : MonoBehaviour
 {
+
     private Animator anim;
     public CharacterController controller;
     public float vertical_velocity;
+    public float gravity = 14.0f;
+    public float jumpForce = 10.0f;
+
     
 
     void Start()
     {
         anim = GetComponent<Animator>();
-  //      controller = GetComponent<CharacterController>();
-    }
+       /* controller = GetComponent<CharacterController>();
+ */   }
 
     void OnTriggerEnter(Collider other)
     {
@@ -23,11 +27,26 @@ public class ChaScript : MonoBehaviour
 
     void Update()
     {
- /*       if (controller.isGrounded)
+    /*    if (controller.isGrounded)
         {
-            vertical_velocity = -8f * Time.deltaTime;
+            vertical_velocity = -gravity * Time.deltaTime;
+            if (Input.GetKey(KeyCode.J))
+            {
+                vertical_velocity = jumpForce;
+            }
+
+
         }
- */       if (Input.GetKey(KeyCode.UpArrow))
+        else
+        {
+            vertical_velocity -= gravity * Time.deltaTime;
+        }
+
+        Vector3 moveVector = new Vector3(0, vertical_velocity, 0);
+        controller.Move(moveVector * Time.deltaTime);
+
+
+   */     if (Input.GetKey(KeyCode.UpArrow))
         {
             anim.SetBool("RunLeft", true);
             float translation = Time.deltaTime * 10;
@@ -87,7 +106,6 @@ public class ChaScript : MonoBehaviour
             anim.SetBool("Attack", false);
         }
 
-//        controller.Move(new Vector3(0, vertical_velocity, 0));
 
 
     }
