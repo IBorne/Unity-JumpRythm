@@ -1,4 +1,4 @@
 sceneSetups:
-- path: C:/Users/Ianis/Documents/GitHub 2/JumpRhythm/Assets/Haha.unity
+- path: Assets/Haha.unity
   isLoaded: 1
   isActive: 1
