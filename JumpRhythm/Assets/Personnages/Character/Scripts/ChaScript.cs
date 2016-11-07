@@ -109,7 +109,7 @@ public class ChaScript : MonoBehaviour
         if (Input.GetKey(KeyCode.J))
         {
             float translation = Time.deltaTime * 10;
-            transform.Translate(0, translation, translation);
+            transform.Translate(0, translation, 0);
         }
         if (Input.GetKey(KeyCode.K))
         {
