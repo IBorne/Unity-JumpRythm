@@ -3,19 +3,18 @@ using System.Collections;
 
 public class ChaScript : MonoBehaviour
 {
-
     private Animator anim;
-    public CharacterController controller;
-    public float vertical_velocity;
-    public float gravity = 14.0f;
-    public float jumpForce = 10.0f;
-
-    
+    private float vertical_velocity;
+    public float gravity = 45f;
+    public float jumpforce = 20f;
+    public float speed = 11f;
+    public Rigidbody rb;
+    bool GO = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
- ///       controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -27,96 +26,48 @@ public class ChaScript : MonoBehaviour
 
     void Update()
     {
-/*        if (controller.isGrounded)
-        {
-            vertical_velocity = -gravity * Time.deltaTime;
-            if (Input.GetKey(KeyCode.J))
-            {
-                vertical_velocity = jumpForce;
-            }
 
-
-        }
-        else
+        if (Time.timeSinceLevelLoad > 0.7465)
         {
-            vertical_velocity -= gravity * Time.deltaTime;
+            GO = true;
         }
 
-        Vector3 moveVector = new Vector3(0, vertical_velocity, 0);
-        controller.Move(moveVector * Time.deltaTime);
-
-
- */       if (Input.GetKey(KeyCode.UpArrow))
-        {
-            anim.SetBool("RunLeft", true);
-            float translation = Time.deltaTime * 10;
-            transform.Translate(translation, 0, 0);
-        }
-        else
-        {
-            anim.SetBool("RunLeft", false);
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            anim.SetBool("RunBack", true);
-            
-            float translation = Time.deltaTime * 10;
-            transform.Translate(0, 0, -translation);
-        }
-        else
-        {
-            anim.SetBool("RunBack", false);
-            
-            
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (GO)
         {
             anim.SetBool("Run", true);
-            
-            float translation = Time.deltaTime * 10;
+            float translation = Time.deltaTime * speed;
             transform.Translate(0, 0, translation);
-        }
-        else
-        {
-            anim.SetBool("Run", false);
-            
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            
-            anim.SetBool("RunRight", true);
-            float translation = Time.deltaTime * 10;
-            transform.Translate(-translation, 0, 0);
-        }
-        else
-        {
-            anim.SetBool("RunRight", false);
-            
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
+            anim.SetBool("Run", false);
             anim.SetBool("Attack", true);
         }
         else
         {
             anim.SetBool("Attack", false);
+            anim.SetBool("Run", true);
         }
 
-        if (Input.GetKey(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            float translation = Time.deltaTime * 10;
-            transform.Translate(0, translation, 0);
+            if(transform.position.y <= 2f)
+            {
+                vertical_velocity = jumpforce;
+            }
         }
-        if (Input.GetKey(KeyCode.K))
+        
+        else
         {
-            float translation = Time.deltaTime * 10;
-            transform.Translate(0, -translation, 0);
+            vertical_velocity -= gravity * Time.deltaTime;
+            if(vertical_velocity < -45f)
+            {
+                vertical_velocity = -gravity;
+            }
         }
-    
+        rb.AddForce(0, vertical_velocity, 0, ForceMode.VelocityChange);
+
     }
 
 
