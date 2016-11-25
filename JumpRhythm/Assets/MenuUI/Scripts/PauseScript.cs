@@ -1,17 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PauseScript : MonoBehaviour {
     public static bool paused;
-	// Use this for initialization
-	void Start () {
-        paused = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
     public void Pause()
     {
         paused = !paused;
@@ -24,4 +16,13 @@ public class PauseScript : MonoBehaviour {
             Time.timeScale = 1;
         }
     }
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(false);
+            GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true);
+            Pause();
+        }
+    }     
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ChaScript : MonoBehaviour
@@ -11,8 +12,13 @@ public class ChaScript : MonoBehaviour
     public Rigidbody rb;
     bool GO = false;
 
+    public Text countText;
+    private int count;
+
     void Start()
     {
+        count = 0;
+        SetCountText();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
@@ -21,13 +27,21 @@ public class ChaScript : MonoBehaviour
     {
         if (other.attachedRigidbody)
             other.attachedRigidbody.useGravity = false;
-
+        if (other.gameObject.CompareTag("Box_Slime"))
+        {
+            other.gameObject.SetActive(false);
+            count += 20;
+            SetCountText();
+        }
     }
-
+    void SetCountText()
+    {
+        countText.text = "Score :" + count.ToString();
+    }
     void Update()
     {
-
-        if (Time.timeSinceLevelLoad > 0.7465)
+        //gestion du mouvement
+        if (Time.timeSinceLevelLoad > 1)
         {
             GO = true;
         }
@@ -49,15 +63,14 @@ public class ChaScript : MonoBehaviour
             anim.SetBool("Attack", false);
             anim.SetBool("Run", true);
         }
-
+        //destrucution des ennemies
         if (Input.GetKeyDown(KeyCode.F))
         {
             if(transform.position.y <= 2f)
             {
                 vertical_velocity = jumpforce;
             }
-        }
-        
+        }      
         else
         {
             vertical_velocity -= gravity * Time.deltaTime;
